@@ -26,9 +26,9 @@ import java.io.*;
  */
 public class TestNaiveStemmer {
     public static void main(String[] args) {
-        NaiveStemmer.init("D:\\_data\\GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
+        NaiveStemmer.init("GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
 
-        String inputFileName = "D:\\2218_proje\\_temp\\test.txt";
+        String inputFileName = "test.txt";
         try {
             BufferedReader br = new BufferedReader(new java.io.FileReader(inputFileName));
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(inputFileName + ".stem"), "UTF-8"));
