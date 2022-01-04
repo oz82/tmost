@@ -8,4 +8,5 @@ Please cite the following publications:
 * Aslan, Ö. (2018). Türkçe için gözetimsiz sözdizimsel belirsizlik giderme (Doctoral dissertation, Anadolu University (Turkey)).
 
 NaiveStemmer's frequency file:
-	https://drive.google.com/file/d/1hKlmG3aKJLLsAR7XmqOXBJDUy4TLALhj/view?usp=sharing
+
+- https://drive.google.com/file/d/1hKlmG3aKJLLsAR7XmqOXBJDUy4TLALhj/view?usp=sharing
