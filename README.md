@@ -10,3 +10,8 @@ Please cite the following publications:
 NaiveStemmer's frequency file:
 
 - https://drive.google.com/file/d/1hKlmG3aKJLLsAR7XmqOXBJDUy4TLALhj/view?usp=sharing
+
+Corpus sample:
+
+- https://drive.google.com/file/d/1a7tE8p3f-IH2eTHivYsmdyYW6dYXns0Z/view?usp=sharing
+
