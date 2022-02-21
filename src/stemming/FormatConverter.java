@@ -21,8 +21,6 @@ package stemming;
 import common.Common;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
