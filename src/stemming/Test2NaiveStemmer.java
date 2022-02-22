@@ -27,7 +27,7 @@ import java.util.Scanner;
  */
 public class Test2NaiveStemmer {
     public static void main(String[] args) {
-        NaiveStemmer.init("D:\\_data\\GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
+        NaiveStemmer.init("GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
 
         Scanner scan = new Scanner(System.in);
         String input = "";
@@ -35,6 +35,7 @@ public class Test2NaiveStemmer {
             System.out.print("Enter the word: ");
             input = scan.nextLine();
             System.out.println(NaiveStemmer.getStem(input, true));
+            System.out.println(NaiveStemmer.morphoDisam(input)[0] + "\t" + NaiveStemmer.morphoDisam(input)[1]);
         } while(!input.isEmpty());
     }
 }

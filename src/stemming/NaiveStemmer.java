@@ -86,7 +86,7 @@ public class NaiveStemmer {
         return result;
     }
 
-    public static MorphoAnalysis morphoDisam(String token) {
+    public static Object[] morphoDisam(String token) {
         token = getLowercase(token);
         MorphoAnalysis[] analyses = analyzer.getAnalysis(token);
         if (analyses.length == 0) {
@@ -105,7 +105,7 @@ public class NaiveStemmer {
             }
             //////
 
-            return analyses[fi];
+            return new Object[]{analyses, fi};
         }
     }
 
