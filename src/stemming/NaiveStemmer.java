@@ -18,6 +18,7 @@
  */
 package stemming;
 
+import lang_specific.LowerCase;
 import morphology.Analyzer;
 import morphology.MorphoAnalysis;
 import morphology.Synthesizer;
@@ -34,8 +35,6 @@ import java.util.List;
 public class NaiveStemmer {
     private static Analyzer analyzer;
     private static Synthesizer synthesizer;
-    protected static final String LOWERCASE = "abcçdefgğhıijklmnoöprsştuüvyzâîôû";
-    protected static final String UPPERCASE = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZÂÎÔÛ";
     protected static HashMap<String, Integer> weights = new HashMap<>();
     protected static List<String> apostropheList;
 
@@ -70,24 +69,8 @@ public class NaiveStemmer {
         }
     }
 
-    private static String getLowercase(String s) {
-        String result = "";
-        for (char c : s.toCharArray()) {
-            int posL = LOWERCASE.indexOf(c);
-            int posU = UPPERCASE.indexOf(c);
-            if (posL > -1) {
-                result += c;
-            } else if (posU > -1) {
-                result += LOWERCASE.charAt(posU);
-            } else {
-                result += c;
-            }
-        }
-        return result;
-    }
-
     public static Object[] morphoDisam(String token) {
-        token = getLowercase(token);
+        token = LowerCase.getLowercase(token);
         MorphoAnalysis[] analyses = analyzer.getAnalysis(token);
         if (analyses.length == 0) {
             return null;
@@ -96,7 +79,7 @@ public class NaiveStemmer {
             //////
             int c = 0, f = 0, fi = 0;
             for (MorphoAnalysis ma : analyses) {
-                Integer w = weights.get(ma.getStem().getLexical());
+                Integer w = weights.get(ma.getStem().getSurface());
                 if (w != null && w > f) {
                     f = w;
                     fi = c;
@@ -110,7 +93,7 @@ public class NaiveStemmer {
     }
 
     public static String getPOS(String token) {
-        token = getLowercase(token);
+        token = LowerCase.getLowercase(token);
         String[] arr = processApostrophe(token);
         if (!arr[0].equals(arr[1])) {
             return "?";
@@ -121,7 +104,7 @@ public class NaiveStemmer {
         }
         int c = 0, f = 0, fi = 0;
         for (MorphoAnalysis ma : analyses) {
-            Integer w = weights.get(ma.getStem().getLexical());
+            Integer w = weights.get(ma.getStem().getSurface());
             if (w != null && w > f) {
                 f = w;
                 fi = c;
@@ -132,7 +115,7 @@ public class NaiveStemmer {
     }
 
     public static String getStem(String token, boolean surfaceFormMode) {
-        token = getLowercase(token);
+        token = LowerCase.getLowercase(token);
         String[] arr = processApostrophe(token);
         if (!arr[0].equals(arr[1])) {
             return arr[1];
@@ -143,7 +126,7 @@ public class NaiveStemmer {
         }
         int c = 0, f = 0, fi = 0;
         for (MorphoAnalysis ma : analyses) {
-            Integer w = weights.get(ma.getStem().getLexical());
+            Integer w = weights.get(ma.getStem().getSurface());
             if (w != null && w > f) {
                 f = w;
                 fi = c;
@@ -161,7 +144,7 @@ public class NaiveStemmer {
         String[] tokens = sentence.split(" ");
         String temp = "";
         for (String token : tokens) {
-            token = getLowercase(token);
+            token = LowerCase.getLowercase(token);
             String[] arr = processApostrophe(token);
             if (!arr[0].equals(arr[1])) {
                 temp += arr[1] + " ";
@@ -175,7 +158,7 @@ public class NaiveStemmer {
                 //////
                 int c = 0, f = 0, fi = 0;
                 for (MorphoAnalysis ma : analyses) {
-                    Integer w = weights.get(ma.getStem().getLexical());
+                    Integer w = weights.get(ma.getStem().getSurface());
                     if (w != null && w > f) {
                         f = w;
                         fi = c;

@@ -20,6 +20,7 @@ package stemming;
 
 import common.Basics;
 import common.Common;
+import lang_specific.LowerCase;
 import morphology.Analyzer;
 import morphology.MorphoAnalysis;
 import morphology.Synthesizer;
@@ -38,8 +39,6 @@ public class FastStemmer {
     protected static Map<String, String> mapTokenAnalysis;
     protected static List<String> apostropheList;
     protected static String sortCrit;
-    protected static final String LOWERCASE = "abcçdefgğhıijklmnoöprsştuüvyzâîôû";
-    protected static final String UPPERCASE = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZÂÎÔÛ";
     private static final String numbers = "0123456789";
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -255,7 +254,7 @@ public class FastStemmer {
                     String processedToken = token;
 
                     processedToken = processAccents(processedToken);
-                    processedToken = getLowercase(processedToken);
+                    processedToken = LowerCase.getLowercase(processedToken);
                     processedToken = clean(processedToken);
 
                     String[] arr = processApostrophe(processedToken);
@@ -340,22 +339,6 @@ public class FastStemmer {
                 }
             }
             return list.toArray(new MorphoAnalysis[list.size()]);
-        }
-
-        private String getLowercase(String s) {
-            String result = "";
-            for (char c : s.toCharArray()) {
-                int posL = FastStemmer.LOWERCASE.indexOf(c);
-                int posU = FastStemmer.UPPERCASE.indexOf(c);
-                if (posL > -1) {
-                    result += c;
-                } else if (posU > -1) {
-                    result += FastStemmer.LOWERCASE.charAt(posU);
-                } else {
-                    result += c;
-                }
-            }
-            return result;
         }
 
         private String processAccents(String s) {

@@ -27,7 +27,7 @@ import java.util.Scanner;
  */
 public class Test2NaiveStemmer {
     public static void main(String[] args) {
-        NaiveStemmer.init("GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
+        NaiveStemmer.init("G:\\My Drive\\_sync\\_code_archive\\java\\idea\\tubitak-3501\\_io\\GiTuCo.filt2.uniq.shuf.stemF.format_F.frq");
 
         Scanner scan = new Scanner(System.in);
         String input = "";
