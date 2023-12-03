@@ -9,9 +9,9 @@ Please cite the following publications:
 
 NaiveStemmer's frequency file:
 
-- https://drive.google.com/file/d/1hKlmG3aKJLLsAR7XmqOXBJDUy4TLALhj/view?usp=sharing
+- https://drive.google.com/file/d/104KH1UEprWl62I-pvWxjtY0MTO0CRdmD/view?usp=sharing
 
 Corpus sample:
 
-- https://drive.google.com/file/d/1a7tE8p3f-IH2eTHivYsmdyYW6dYXns0Z/view?usp=sharing
+- https://drive.google.com/file/d/104L-C9a_X07-XSanHEY_siPmOQoE6BTj/view?usp=sharing
 
