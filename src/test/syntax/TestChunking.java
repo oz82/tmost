@@ -21,6 +21,8 @@ package test.syntax;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.TreeSet;
+
 import morphology.Analyzer;
 import syntax.MorphoAnalysisMap;
 import syntax.SyntaxAnalysis;
@@ -51,10 +53,16 @@ public class TestChunking {
             SyntaxAnalysis sa = new SyntaxAnalysis(analyzer, mamList, 12, 200000);
             long elapsedTimeMillis = System.currentTimeMillis() - start;
 
+            TreeSet<String> set = new TreeSet<>();
             for (Function f : sa.getTreeList()) {
                 Settings.printCode = 3;
-                System.out.println(f.toString());
+                //System.out.println(f.toString());
+                set.add(f.toString());
                 Settings.printCode = 0;
+            }
+
+            for (String s : set) {
+                System.out.println(s);
             }
 
             System.out.println("");
