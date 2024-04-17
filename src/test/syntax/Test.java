@@ -41,7 +41,7 @@ public class Test {
     static int blockLimit, cartesianLimit;
 
     public static void main(String[] args) throws InterruptedException {
-        blockLimit = 10000;
+        blockLimit = 200000;
         cartesianLimit = 10000;
         test1();
         //test2();
