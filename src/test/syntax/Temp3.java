@@ -1,11 +1,13 @@
 package test.syntax;
 
 import morphology.Analyzer;
+import morphology.MorphoAnalysis;
 import syntax.MorphoAnalysisMap;
 import syntax.SyntaxAnalysis;
 import syntax.Unifier;
 import syntax.function.Function;
 import syntax.setting.Settings;
+import syntax.structure.Clause;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -13,10 +15,8 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
-public class Temp2 {
+public class Temp3 {
     public static void main(String[] args) {
         Analyzer analyzer = new Analyzer(1);
         String path = "C:\\Users\\oz\\Desktop\\_github\\jupyter-notebook-files\\aut\\_files\\syntax_tree_gold_METU_numTree[11,x]_v2.txt";
@@ -51,25 +51,33 @@ public class Temp2 {
                     for (Function f : sa.getTreeList()) {
                         String syntaxTree = f.toString().replaceAll(",", "");
                         if (referenceSyntaxTree.equals(syntaxTree)) {
-                            Settings.printCode = 3;
-                            chunking = f.toString();
-                            Settings.printCode = 1;
+                            System.out.println();
+                            Clause c = (Clause) f;
+                            MorphoAnalysis[] referencePath = c.getPath();
+                            MorphoAnalysis[][] maArr = mam.getMap();
+
+                            for (int i = 0; i < referencePath.length; i++) {
+                                MorphoAnalysis ma = referencePath[i];
+                                MorphoAnalysis[] analysis = analyzer.getAnalysis(sa.getMorphoAnalysisMapList().get(0).getToken()[i]);
+                                if (analysis.length > 1) {
+                                    System.out.println("Bağlam: \"" + sentence + "\"");
+                                    System.out.println("Yukarıda verilen cümle bağlamında \"" + sa.getMorphoAnalysisMapList().get(0).getToken()[i] + "\" kelimesi için şu olası morfolojik çözümlemelerden hangisinin geçerli olduğunu bul:");
+                                    for (int j = 0; j < analysis.length; j++) {
+                                        System.out.println(analysis[j].toStringShort());
+                                    }
+                                    System.out.println(ma.toStringShort());
+                                    count++;
+                                    System.out.println();
+                                }
+                            }
+                            //System.out.println();
                         }
                     }
                     Settings.printCode = 0;
-                    if (chunking.isEmpty()) {
-                        count++;
-                        System.out.println(sentence + "\n");
-                        for (Function f : sa.getTreeList()) {
-                            System.out.println(f.toString().replaceAll(",", ""));
-                        }
-                        System.out.println("\n\n");
-                    }
-                    System.out.println(sentence + "\n" + chunking + "\n");
                     sentMode = false;
                 }
             }
-            //System.out.println(count);
+            System.out.println(count);
             in.close();
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
