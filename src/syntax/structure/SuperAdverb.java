@@ -116,7 +116,7 @@ public class SuperAdverb extends Syntheme implements Adverb {
         }
 
         if (Settings.printCode == 0) {
-            return "[SuperAdverb " + sComplement + ", " + "[BaseAdverb " + super.getHead() + "]" + "]";
+            return "[SuperAdverb " + sComplement + " " + "[BaseAdverb " + super.getHead() + "]" + "]";
         } else if (Settings.printCode == 1) {
             if (complement.isEmpty()) {
                 sComplement = "";
@@ -186,7 +186,7 @@ public class SuperAdverb extends Syntheme implements Adverb {
 
             return result + s + super.getHead().toString();
         } else if (Settings.printCode == 4) {
-            String separ = "|", comp = "", s = "";
+            String separ = " ", comp = "", s = "";
             ArrayList<Role> roleList = new ArrayList();
 
             if (!complement.isEmpty()) {

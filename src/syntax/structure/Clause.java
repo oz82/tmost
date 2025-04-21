@@ -419,18 +419,28 @@ public class Clause extends Syntheme implements Verb {
         } else if (complement.size() == 1) {
             sComplement = complement.get(0).toString();
         } else {
-            sComplement = complement.toString();
+            String temp = "";
+            for (Complement c : complement) {
+                temp += c + " ";
+            }
+            temp = temp.substring(0, temp.length() - 1);
+            sComplement = temp;
         }
         if (adjunct.isEmpty()) {
             sAdjunct = "[Adjunct null]";
         } else if (adjunct.size() == 1) {
             sAdjunct = adjunct.get(0).toString();
         } else {
-            sAdjunct = adjunct.toString();
+            String temp = "";
+            for (Adjunct a : adjunct) {
+                temp += a + " ";
+            }
+            temp = temp.substring(0, temp.length() - 1);
+            sAdjunct = temp;
         }
 
         if (Settings.printCode == 0) {
-            return "[Clause " + sSubject + ", " + sComplement + ", " + sAdjunct + ", " + "[Verb " + super.getHead() + "] " + this.polarity + " " + this.compound + " " + this.tense + " " + this.person + "]";
+            return "[Clause " + sSubject + " " + sComplement + " " + sAdjunct + " " + "[Verb " + super.getHead() + "] " + this.polarity + " " + this.compound + " " + this.tense + " " + this.person + "]";
         } else if (Settings.printCode == 1) {
             if (subject == null) {
                 sSubject = "";

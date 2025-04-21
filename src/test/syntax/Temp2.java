@@ -19,7 +19,7 @@ import java.util.TreeSet;
 public class Temp2 {
     public static void main(String[] args) {
         Analyzer analyzer = new Analyzer(1);
-        String path = "C:\\Users\\oz\\Desktop\\_github\\jupyter-notebook-files\\aut\\_files\\syntax_tree_gold_METU_numTree[11,x]_v2.txt";
+        String path = "/home/oz/Desktop/github/python/jupyter-notebook/aut/_files/syntax_tree_gold_METU_numTree[11,x]_v2.txt";
         try {
             FileInputStream fstream = new FileInputStream(path);
             DataInputStream in = new DataInputStream(fstream);

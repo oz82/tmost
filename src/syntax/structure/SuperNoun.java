@@ -116,7 +116,7 @@ public class SuperNoun extends Syntheme implements Noun {
         }
 
         if (Settings.printCode == 0) {
-            return "[SuperNoun " + sComplement + ", " + "[BaseNoun " + super.getHead() + "]" + "]";
+            return "[SuperNoun " + sComplement + " " + "[BaseNoun " + super.getHead() + "]" + "]";
         } else if (Settings.printCode == 1) {
             if (complement.isEmpty()) {
                 sComplement = "";
@@ -186,7 +186,7 @@ public class SuperNoun extends Syntheme implements Noun {
 
             return result + s + super.getHead().toString();
         } else if (Settings.printCode == 4) {
-            String separ = "|", comp = "", s = "";
+            String separ = " ", comp = "", s = "";
             ArrayList<Role> roleList = new ArrayList();
 
             if (!complement.isEmpty()) {

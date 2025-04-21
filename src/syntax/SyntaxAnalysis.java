@@ -3,6 +3,7 @@ package syntax;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import morphology.Analyzer;
 import morphology.MorphoAnalysis;
@@ -53,6 +54,34 @@ public class SyntaxAnalysis {
 
     public ArrayList<Function> getTreeList() {
         return treeList;
+    }
+
+    public void setTreeList(ArrayList<Function> treeList) {
+        this.treeList = treeList;
+        numTree = treeList.size();
+        int numToken = morphoAnalysisMapList.get(0).getToken().length;
+        // get(0) demek tek mam varsayiliyor demek, oysa bir cumlenin birden cok mam'i (birden cok tokenizasyonu) olabilir. duzenlenmeli
+
+        MorphoAnalysis[][] map = new MorphoAnalysis[numToken][];
+        HashSet<MorphoAnalysis>[] aList = new HashSet[numToken];
+        for (int i = 0; i < numToken; i++) {
+            aList[i] = new HashSet<>();
+        }
+        for (Function f : treeList) {
+            Clause clause = (Clause) f;
+            MorphoAnalysis[] mArr = clause.getPath();
+            for (int i = 0; i < mArr.length; i++) {
+                aList[i].add(mArr[i]);
+            }
+        }
+        int cartesianProduct = 1;
+        for (int i = 0; i < numToken; i++) {
+            map[i] = aList[i].toArray(new MorphoAnalysis[aList[i].size()]);
+            cartesianProduct *= aList[i].size();
+        }
+        morphoAnalysisMapList.get(0).setCartesianProduct(cartesianProduct);
+        morphoAnalysisMapList.get(0).setMap(map);
+        totalCartesianProduct = cartesianProduct;
     }
 
     public ArrayList<Clause> getAllClauseList() {

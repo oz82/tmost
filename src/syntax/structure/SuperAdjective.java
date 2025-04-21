@@ -116,7 +116,7 @@ public class SuperAdjective extends Syntheme implements Adjective, Noun {
         }
 
         if (Settings.printCode == 0) {
-            return "[SuperAdjective " + sComplement + ", " + "[BaseAdjective " + super.getHead() + "]" + "]";
+            return "[SuperAdjective " + sComplement + " " + "[BaseAdjective " + super.getHead() + "]" + "]";
         } else if (Settings.printCode == 1) {
             if (complement.isEmpty()) {
                 sComplement = "";
@@ -186,7 +186,8 @@ public class SuperAdjective extends Syntheme implements Adjective, Noun {
 
             return result + s + super.getHead().toString();
         } else if (Settings.printCode == 4) {
-            String separ = "|", comp = "", s = "";
+
+            String separ = " ", comp = "", s = "";
             ArrayList<Role> roleList = new ArrayList();
 
             if (!complement.isEmpty()) {

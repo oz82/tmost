@@ -50,12 +50,12 @@ public class TestChunking {
             long start = System.currentTimeMillis();
             ArrayList<MorphoAnalysisMap> mamList = new ArrayList<>();
             mamList.add(mam);
-            SyntaxAnalysis sa = new SyntaxAnalysis(analyzer, mamList, 12, 200000);
+            SyntaxAnalysis sa = new SyntaxAnalysis(analyzer, mamList, 1, 200000);
             long elapsedTimeMillis = System.currentTimeMillis() - start;
 
             TreeSet<String> set = new TreeSet<>();
             for (Function f : sa.getTreeList()) {
-                Settings.printCode = 3;
+                Settings.printCode = 4;
                 //System.out.println(f.toString());
                 set.add(f.toString());
                 Settings.printCode = 0;
