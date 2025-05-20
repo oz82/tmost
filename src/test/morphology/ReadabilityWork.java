@@ -22,7 +22,8 @@ public class ReadabilityWork {
         for (String sent : sentence) {
             String[] token = sent.split(" ");
             for (String t : token) {
-                tokenSet.add(LowerCase.getLowercase(t));
+                //tokenSet.add(LowerCase.getLowercase(t));
+                tokenSet.add(t);
             }
         }
 
@@ -48,7 +49,7 @@ public class ReadabilityWork {
         }
 
         try {
-            FileWriter fstream = new FileWriter("/home/oz/Documents/ts-sentences-50k-morpho-analysis.txt");
+            FileWriter fstream = new FileWriter("/home/oz/Documents/ts-sentences-50k-morpho-analysis-cased.txt");
             BufferedWriter out = new BufferedWriter(fstream);
 
             for (String s : result) {
